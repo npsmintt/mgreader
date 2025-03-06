@@ -1,3 +1,9 @@
+@import "tailwindcss";
+
+@theme {
+  --font-inter: "Inter", sans-serif; 
+}
+
 .App {
   text-align: center;
 }
