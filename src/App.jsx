@@ -73,18 +73,16 @@ const App = () => {
 
     csvContent += "Code,Description,Count\n";
 
-    // Sort data: G before M, then by number (G1, G10, M1, M20, etc.)
     const sortedEntries = Object.entries(data).sort(([codeA], [codeB]) => {
       const numA = parseInt(codeA.slice(1)); // Extract number part
       const numB = parseInt(codeB.slice(1));
 
       if (codeA[0] === codeB[0]) {
-        return numA - numB; // Sort numbers within the same letter
+        return numA - numB; 
       }
-      return codeA.localeCompare(codeB); // Sort letters alphabetically
+      return codeA.localeCompare(codeB);
     });
 
-    // Convert sorted data to CSV
     sortedEntries.forEach(([code, value]) => {
       if (typeof value === "object") {
         csvContent += `${code},${value.description},${value.count}\n`;
@@ -112,10 +110,10 @@ const App = () => {
   };
 
   return (
-    <div className="font-inter box-border flex w-screen h-screen overflow-hidden">
-      <div className="w-1/2 bg-[#608BC1] flex flex-col justify-center items-center max-sm:w-full">
-        <div className="text-center mb-5 w-md">
-          <p className="font-bold mb-3 text-4xl">
+    <div className="font-inter box-border flex w-screen h-screen overflow-hidden max-sm:flex-col">
+      <div className={`w-1/2 h-screen bg-[#608BC1] flex flex-col justify-center items-center max-sm:w-full ${rawText ? 'max-sm:h-2/6 max-sm:w-full' : ''}`}>
+        <div className={`text-center mb-5 w-md max-sm:w-sm ${rawText ? 'max-sm:hidden' : ''}`}>
+          <p className={`font-bold mb-3 text-4xl max-sm:text-3xl`}>
             Identify G-code & M-code with{" "}
             <span className="text-white">MG Reader</span>!
           </p>
@@ -152,9 +150,9 @@ const App = () => {
           </span>
         </div>
         {rawText && (
-          <div className="mt-5 p-3 border rounded-lg w-3/4 max-w-2xl bg-gray-100">
+          <div className={`mt-5 p-3 border rounded-lg w-3/4 max-w-2xl bg-gray-100 ${rawText ? 'max-sm:p-2' : ''}`}>
             <div className="flex justify-between items-center mb-1">
-              <h2 className="text-md font-bold mb-3">
+              <h2 className={`text-md font-bold mb-3 ${rawText ? 'max-sm:mb-0' : ''}`}>
                 {fileInputRef.current?.files[0]?.name}
               </h2>
               <button
@@ -166,13 +164,13 @@ const App = () => {
                 <FontAwesomeIcon icon={faX} size="xs" color="red" />
               </button>
             </div>
-            <pre className="overflow-scroll h-56 text-sm bg-white p-2 rounded-md border">
+            <pre className={`overflow-scroll h-56 text-sm bg-white p-2 rounded-md border ${rawText ? 'max-sm:h-40' : ''}`}>
               {rawText}
             </pre>
           </div>
         )}
       </div>
-      <div className="w-1/2 bg-[#F3F3E0] items-center flex justify-center flex-col max-sm:w-auto">
+      <div className={`w-1/2 bg-[#F3F3E0] items-center flex justify-center flex-col max-sm:w-auto ${rawText ? 'max-sm:h-4/6 max-sm:w-full' : ''}`}>
         {!rawText ? (
           <>
             <label
@@ -194,7 +192,7 @@ const App = () => {
           <>
             <div className="flex w-3/4 h-10 mb-5">
               <input
-                className="px-5 w-full bg-white rounded-md border-1 border-gray-300"
+                className={`px-5 w-full bg-white rounded-md border-1 border-gray-300`}
                 type="text"
                 placeholder="search for code..."
                 value={filterText}
@@ -202,10 +200,10 @@ const App = () => {
               />
               <FontAwesomeIcon
                 icon={faMagnifyingGlass}
-                className="absolute top-15 right-1/14 text-gray-500"
+                className={`absolute top-15 right-1/14 text-gray-500 ${rawText ? 'max-sm:top-4/11 max-sm:right-2/14' : ''}`}
               />
             </div>
-            <div className="bg-white h-3/4 w-3/4 overflow-y-scroll rounded-2xl mb-5">
+            <div className={`bg-white h-3/4 w-3/4 overflow-y-scroll rounded-2xl mb-5`}>
               <Table
                 data={data}
                 filter={filterText}
@@ -217,10 +215,10 @@ const App = () => {
             </div>
             <button
               onClick={downloadCSV}
-              className="font-inter w-1/5 h-10 bg-[#608BC1] px-3 py-1 rounded-md border-1 border-gray-400 cursor-pointer
-                                hover:bg-[#133E87] transition-colors"
+              className={`font-inter w-1/5 h-10 bg-[#608BC1] px-3 py-1 rounded-md border-1 border-gray-400 cursor-pointer
+                                hover:bg-[#133E87] transition-colors ${rawText ? 'max-sm:w-2/6' : ''}`}
             >
-              <p className="text-white text-sm font-bold">Download CSV</p>
+              <p className={`text-white text-sm font-bold`}>Download CSV</p>
             </button>
           </>
         )}

@@ -23,7 +23,7 @@ const Table = ({ data, filter, fileName }) => {
     return (
         <>
             <div className="bg-white p-5 rounded-2xl">
-                <table className="w-full border-collapse border border-gray-400">
+                <table className={`w-full border-collapse border border-gray-400 ${data ? 'max-sm:text-sm' : ''}`}>
                     <thead>
                         <tr>
                             <th colSpan={3} className='text-left'>{fileName}</th>
