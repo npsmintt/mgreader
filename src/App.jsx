@@ -136,7 +136,7 @@ const App = () => {
           <input
             type="file"
             id="data_file"
-            accept=".nc"
+            accept=".nc,.txt"
             ref={fileInputRef}
             className="hidden"
             onChange={handleUpload}
