@@ -136,7 +136,7 @@ const App = () => {
           <input
             type="file"
             id="data_file"
-            accept=".nc,.txt"
+            accept="*/*"
             ref={fileInputRef}
             className="hidden"
             onChange={handleUpload}
@@ -164,7 +164,7 @@ const App = () => {
                 <FontAwesomeIcon icon={faX} size="xs" color="red" />
               </button>
             </div>
-            <pre className={`overflow-scroll h-56 text-sm bg-white p-2 rounded-md border ${rawText ? 'max-sm:h-40' : ''}`}>
+            <pre className={`overflow-scroll h-56 text-sm bg-white p-2 rounded-md border ${rawText ? 'max-sm:h-32' : ''}`}>
               {rawText}
             </pre>
           </div>
@@ -190,7 +190,7 @@ const App = () => {
           </>
         ) : (
           <>
-            <div className="flex w-3/4 h-10 mb-5">
+            <div className="flex w-3/4 h-10 mb-5 max-sm:mt-5">
               <input
                 className={`px-5 w-full bg-white rounded-md border-1 border-gray-300`}
                 type="text"
@@ -200,7 +200,7 @@ const App = () => {
               />
               <FontAwesomeIcon
                 icon={faMagnifyingGlass}
-                className={`absolute top-15 right-1/14 text-gray-500 ${rawText ? 'max-sm:top-4/11 max-sm:right-2/14' : ''}`}
+                className={`absolute top-15 right-1/14 text-gray-500 ${rawText ? 'max-sm:top-9/22 max-sm:right-2/14' : ''}`}
               />
             </div>
             <div className={`bg-white h-3/4 w-3/4 overflow-y-scroll rounded-2xl mb-5`}>
@@ -216,7 +216,7 @@ const App = () => {
             <button
               onClick={downloadCSV}
               className={`font-inter w-1/5 h-10 bg-[#608BC1] px-3 py-1 rounded-md border-1 border-gray-400 cursor-pointer
-                                hover:bg-[#133E87] transition-colors ${rawText ? 'max-sm:w-2/6' : ''}`}
+                                hover:bg-[#133E87] transition-colors ${rawText ? 'max-sm:w-2/6 max-sm:mb-5' : ''}`}
             >
               <p className={`text-white text-sm font-bold`}>Download CSV</p>
             </button>
