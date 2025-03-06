@@ -198,9 +198,13 @@ const App = () => {
                 value={filterText}
                 onChange={handleSearch}
               />
-              <FontAwesomeIcon
+              {/* <FontAwesomeIcon
                 icon={faMagnifyingGlass}
                 className={`absolute top-15 right-1/14 text-gray-500 ${rawText ? 'max-sm:top-9/22 max-sm:right-2/14' : ''}`}
+              /> */}
+              <FontAwesomeIcon
+                icon={faMagnifyingGlass}
+                className={`absolute right-26 translate-y-2.5 max-sm:translate-x-72 text-gray-500`}
               />
             </div>
             <div className={`bg-white h-3/4 w-3/4 overflow-y-scroll rounded-2xl mb-5`}>
